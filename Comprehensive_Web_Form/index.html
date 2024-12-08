@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Profile Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-code"></i> Developer Profile Form</h1>
+            <p class="subtitle">Create your professional developer profile</p>
+        </header>
+
+        <nav class="form-nav">
+            <button class="nav-btn active" data-section="profile">
+                <i class="fas fa-user-circle"></i> Profile
+            </button>
+            <button class="nav-btn" data-section="skills">
+                <i class="fas fa-laptop-code"></i> Skills
+            </button>
+            <button class="nav-btn" data-section="preferences">
+                <i class="fas fa-sliders-h"></i> Preferences
+            </button>
+            <button class="nav-btn" data-section="stats">
+                <i class="fas fa-chart-bar"></i> Statistics
+            </button>
+        </nav>
+
+        <main class="form-container">
+            <form id="developerForm" class="profile-form">
+                <!-- Profile Section -->
+                <section id="profile-section" class="form-section active">
+                    <h2><i class="fas fa-user-circle"></i> Basic Information</h2>
+                    <div class="form-group">
+                        <label for="name">Full Name:</label>
+                        <input type="text" id="name" name="name" required
+                               placeholder="Enter your full name"
+                               pattern="[A-Za-z\s]{2,}"
+                               title="Please enter at least 2 characters, letters only">
+                        <div class="validation-feedback"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" name="email" required
+                               placeholder="Enter your email address"
+                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                        <div class="validation-feedback"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="github">GitHub Username:</label>
+                        <div class="input-with-icon">
+                            <i class="fab fa-github"></i>
+                            <input type="text" id="github" name="github"
+                                   placeholder="Enter your GitHub username">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Skills Section -->
+                <section id="skills-section" class="form-section">
+                    <h2><i class="fas fa-laptop-code"></i> Technical Skills</h2>
+                    
+                    <div class="form-group">
+                        <label for="programmingLanguages">Programming Languages:</label>
+                        <div class="multi-select">
+                            <select id="programmingLanguages" name="languages[]" multiple required>
+                                <option value="javascript">JavaScript</option>
+                                <option value="python">Python</option>
+                                <option value="java">Java</option>
+                                <option value="csharp">C#</option>
+                                <option value="cpp">C++</option>
+                                <option value="ruby">Ruby</option>
+                                <option value="php">PHP</option>
+                                <option value="swift">Swift</option>
+                                <option value="go">Go</option>
+                                <option value="rust">Rust</option>
+                            </select>
+                            <div class="selected-options"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Expertise Level:</label>
+                        <div class="expertise-slider">
+                            <input type="range" id="expertise" name="expertise" 
+                                   min="1" max="5" step="1" value="3">
+                            <div class="expertise-labels">
+                                <span>Beginner</span>
+                                <span>Junior</span>
+                                <span>Intermediate</span>
+                                <span>Senior</span>
+                                <span>Expert</span>
+                            </div>
+                            <div class="expertise-value"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Development Platforms:</label>
+                        <div class="platform-grid">
+                            <div class="platform-item">
+                                <input type="checkbox" id="web" name="platforms[]" value="web">
+                                <label for="web">
+                                    <i class="fas fa-globe"></i>
+                                    <span>Web</span>
+                                </label>
+                            </div>
+                            <div class="platform-item">
+                                <input type="checkbox" id="mobile" name="platforms[]" value="mobile">
+                                <label for="mobile">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>Mobile</span>
+                                </label>
+                            </div>
+                            <div class="platform-item">
+                                <input type="checkbox" id="desktop" name="platforms[]" value="desktop">
+                                <label for="desktop">
+                                    <i class="fas fa-desktop"></i>
+                                    <span>Desktop</span>
+                                </label>
+                            </div>
+                            <div class="platform-item">
+                                <input type="checkbox" id="cloud" name="platforms[]" value="cloud">
+                                <label for="cloud">
+                                    <i class="fas fa-cloud"></i>
+                                    <span>Cloud</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Preferences Section -->
+                <section id="preferences-section" class="form-section">
+                    <h2><i class="fas fa-sliders-h"></i> Work Preferences</h2>
+
+                    <div class="form-group">
+                        <label>Work Environment:</label>
+                        <div class="toggle-group">
+                            <input type="radio" id="remote" name="workEnv" value="remote" required>
+                            <label for="remote">
+                                <i class="fas fa-home"></i> Remote
+                            </label>
+                            <input type="radio" id="hybrid" name="workEnv" value="hybrid">
+                            <label for="hybrid">
+                                <i class="fas fa-sync-alt"></i> Hybrid
+                            </label>
+                            <input type="radio" id="onsite" name="workEnv" value="onsite">
+                            <label for="onsite">
+                                <i class="fas fa-building"></i> On-site
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="workHours">Preferred Work Hours:</label>
+                        <div class="time-range">
+                            <input type="time" id="workStart" name="workStart" value="09:00">
+                            <span>to</span>
+                            <input type="time" id="workEnd" name="workEnd" value="17:00">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Team Size Preference:</label>
+                        <div class="range-slider">
+                            <input type="range" id="teamSize" name="teamSize" 
+                                   min="1" max="20" step="1" value="5">
+                            <div class="range-value"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Statistics Section -->
+                <section id="stats-section" class="form-section">
+                    <h2><i class="fas fa-chart-bar"></i> Community Statistics</h2>
+                    
+                    <div class="stats-grid">
+                        <div class="stats-card">
+                            <h3>Programming Languages</h3>
+                            <div class="stats-chart" id="languagesChart"></div>
+                        </div>
+                        <div class="stats-card">
+                            <h3>Experience Levels</h3>
+                            <div class="stats-chart" id="expertiseChart"></div>
+                        </div>
+                        <div class="stats-card">
+                            <h3>Platforms Distribution</h3>
+                            <div class="stats-chart" id="platformsChart"></div>
+                        </div>
+                        <div class="stats-card">
+                            <h3>Work Preferences</h3>
+                            <div class="stats-chart" id="workEnvChart"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="prevBtn">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button type="button" class="btn-secondary" id="nextBtn">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button type="submit" class="btn-primary" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> Submit Profile
+                    </button>
+                </div>
+            </form>
+        </main>
+
+        <div class="notification" id="notification">
+            <i class="fas fa-check-circle"></i>
+            <span class="notification-message"></span>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

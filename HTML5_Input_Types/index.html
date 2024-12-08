@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Input Types Demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-edit"></i> HTML5 Input Types Demo</h1>
+            <p class="subtitle">Explore the power of modern HTML5 form inputs</p>
+        </header>
+
+        <nav class="form-nav">
+            <button class="nav-btn active" data-section="email">Email</button>
+            <button class="nav-btn" data-section="number">Number</button>
+            <button class="nav-btn" data-section="date">Date</button>
+            <button class="nav-btn" data-section="range">Range</button>
+            <button class="nav-btn" data-section="color">Color</button>
+            <button class="nav-btn" data-section="stats">Statistics</button>
+        </nav>
+
+        <main class="form-container">
+            <!-- Task 1: Email Input -->
+            <section id="email-section" class="form-section active">
+                <h2><i class="fas fa-envelope"></i> Email Input</h2>
+                <p class="description">Demonstrates HTML5 email validation with custom patterns</p>
+                <form id="emailForm" class="input-form">
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" name="email" 
+                               placeholder="Enter your email address" 
+                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                               title="Please enter a valid email address"
+                               autocomplete="email"
+                               required>
+                        <div class="validation-feedback"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email-type">Email Type:</label>
+                        <select id="email-type" name="email-type" autocomplete="off" required>
+                            <option value="">Select type...</option>
+                            <option value="personal">Personal</option>
+                            <option value="work">Work</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i> Submit Email
+                    </button>
+                </form>
+            </section>
+
+            <!-- Task 2: Number Input -->
+            <section id="number-section" class="form-section">
+                <h2><i class="fas fa-hashtag"></i> Number Input</h2>
+                <p class="description">Explore number input with validation and real-time feedback</p>
+                <form id="numberForm" class="input-form">
+                    <div class="form-group">
+                        <label for="quantity">Quantity:</label>
+                        <div class="number-input-container">
+                            <button type="button" class="number-btn" data-action="decrease">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <input type="number" id="quantity" name="quantity" 
+                                   placeholder="Enter quantity" 
+                                   min="0" max="100" step="1" 
+                                   autocomplete="off"
+                                   required>
+                            <button type="button" class="number-btn" data-action="increase">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="range-slider">
+                            <input type="range" id="quantity-range" 
+                                   min="0" max="100" value="0">
+                        </div>
+                        <div class="validation-feedback"></div>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-check"></i> Submit Quantity
+                    </button>
+                </form>
+            </section>
+
+            <!-- Task 3: Date Input -->
+            <section id="date-section" class="form-section">
+                <h2><i class="fas fa-calendar-alt"></i> Date Input</h2>
+                <p class="description">Advanced date selection with custom calendar</p>
+                <form id="dateForm" class="input-form">
+                    <div class="form-group">
+                        <label for="date">Select Date:</label>
+                        <input type="date" id="date" name="date" 
+                               min="2024-01-01" max="2024-12-31" 
+                               autocomplete="off"
+                               required>
+                        <div class="calendar-widget"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="date-type">Event Type:</label>
+                        <select id="date-type" name="date-type" required>
+                            <option value="">Select type...</option>
+                            <option value="meeting">Meeting</option>
+                            <option value="deadline">Deadline</option>
+                            <option value="reminder">Reminder</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-calendar-check"></i> Submit Date
+                    </button>
+                </form>
+            </section>
+
+            <!-- Task 4: Range Input -->
+            <section id="range-section" class="form-section">
+                <h2><i class="fas fa-sliders-h"></i> Range Input</h2>
+                <p class="description">Interactive range slider with real-time feedback</p>
+                <form id="rangeForm" class="input-form">
+                    <div class="form-group">
+                        <label for="range">Rating (1-10):</label>
+                        <div class="range-container">
+                            <div class="range-labels">
+                                <span>1</span>
+                                <span>2</span>
+                                <span>3</span>
+                                <span>4</span>
+                                <span>5</span>
+                                <span>6</span>
+                                <span>7</span>
+                                <span>8</span>
+                                <span>9</span>
+                                <span>10</span>
+                            </div>
+                            <input type="range" id="range" name="range" 
+                                   min="1" max="10" step="1" value="5"
+                                   autocomplete="off">
+                            <div class="range-value" id="rangeValue">5</div>
+                        </div>
+                        <div class="range-feedback">
+                            <span class="feedback-text">Average</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-star"></i> Submit Rating
+                    </button>
+                </form>
+            </section>
+
+            <!-- Task 5: Color Input -->
+            <section id="color-section" class="form-section">
+                <h2><i class="fas fa-palette"></i> Color Input</h2>
+                <p class="description">Advanced color picker with presets and live preview</p>
+                <form id="colorForm" class="input-form">
+                    <div class="form-group">
+                        <label for="color">Select Color:</label>
+                        <div class="color-picker-container">
+                            <input type="color" id="color" name="color" 
+                                   value="#ff0000"
+                                   autocomplete="off">
+                            <div class="color-preview" id="colorPreview"></div>
+                        </div>
+                        <div class="color-presets">
+                            <button type="button" class="color-preset" data-color="#ff0000" style="background-color: #ff0000;"></button>
+                            <button type="button" class="color-preset" data-color="#00ff00" style="background-color: #00ff00;"></button>
+                            <button type="button" class="color-preset" data-color="#0000ff" style="background-color: #0000ff;"></button>
+                            <button type="button" class="color-preset" data-color="#ffff00" style="background-color: #ffff00;"></button>
+                            <button type="button" class="color-preset" data-color="#ff00ff" style="background-color: #ff00ff;"></button>
+                        </div>
+                        <div class="color-values">
+                            <span class="hex-value">HEX: #ff0000</span>
+                            <span class="rgb-value">RGB: 255, 0, 0</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-paint-brush"></i> Submit Color
+                    </button>
+                </form>
+            </section>
+
+            <!-- Statistics Section -->
+            <section id="stats-section" class="form-section">
+                <h2><i class="fas fa-chart-bar"></i> Statistics Dashboard</h2>
+                <p class="description">Real-time visualization of form submissions</p>
+                <div class="stats-grid">
+                    <div class="stats-card">
+                        <h3>Email Submissions</h3>
+                        <div class="stats-value" id="emailStats">0</div>
+                        <canvas class="stats-chart" id="emailChart"></canvas>
+                    </div>
+                    <div class="stats-card">
+                        <h3>Number Distribution</h3>
+                        <div class="stats-value" id="numberStats">0</div>
+                        <canvas class="stats-chart" id="numberChart"></canvas>
+                    </div>
+                    <div class="stats-card">
+                        <h3>Date Submissions</h3>
+                        <div class="stats-value" id="dateStats">0</div>
+                        <canvas class="stats-chart" id="dateChart"></canvas>
+                    </div>
+                    <div class="stats-card">
+                        <h3>Range Values</h3>
+                        <div class="stats-value" id="rangeStats">0</div>
+                        <canvas class="stats-chart" id="rangeChart"></canvas>
+                    </div>
+                    <div class="stats-card">
+                        <h3>Color Choices</h3>
+                        <div class="stats-value" id="colorStats">0</div>
+                        <canvas class="stats-chart" id="colorChart"></canvas>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div class="notification" id="notification">
+            <i class="fas fa-check-circle"></i>
+            <span class="notification-message"></span>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
